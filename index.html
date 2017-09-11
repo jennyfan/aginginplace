@@ -9,7 +9,13 @@
 </head>
 <body>
 
+<div id="header">
 <h1>The Costs &amp; Benefits of OAA Funding</h1>
+
+<p>Title III of the Older Americans Act of 1965 (OAA) enables states to fund programs that support aging in place, such as home delivered meals, homemaker services, case management, transportation, and community-based meals. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3664926/#!po=44.3182" target="_blank">Studies suggest</a> that state investments in such community-based service programs have proportionally fewer low-care nursing home residents.</p>
+
+<p><em>Data source: <a href="https://agid.acl.gov/CustomTables/SPR/Data/" target="_blank">Administration for Community Living's AGing Integrated Database (AGID)</a>, 2015</em></p>
+</div>
 
 <script type="text/javascript">
 
@@ -33,7 +39,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 var color = d3.scale.linear()
   	.range(['#f0f9e8','#0868ac']);
 
-var legendText = ['250,000 persons served', '0 registered users'];
+var legendText = ['# of persons served'];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
@@ -115,7 +121,7 @@ d3.csv("assets/funding.csv", function(data) {
 		    	div.transition() 
 		      	   .duration(200)      
 		           .style("opacity", .9);
-		           div.text(d['State'] + ': $' + d['Total Exp'])
+		           div.html('<b>' + d['State'] + '</b> total expenditures: $' + d['Total Exp'] + '<br /><b>Funded by Title III:</b> ' + d['% Title III Exp'] + '<br /><b>Senior Centers:</b> ' + d['Total Senior Centers'])
 		           .style("left", (d3.event.pageX) + "px")     
 		           .style("top", (d3.event.pageY - 28) + "px"); 
 			})           
