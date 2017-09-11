@@ -4,18 +4,20 @@
 <meta charset="utf-8">
 <title>Costs and Benefits of OAA Title III Programs</title>
 <link rel="stylesheet" href="assets/style.css" />
-
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i|PT+Sans:400,400i,700,700i" rel="stylesheet">
 <script src="assets/d3.v3.min.js"></script>
 </head>
 <body>
 
+<h1>The Costs &amp; Benefits of OAA Funding</h1>
+
 <script type="text/javascript">
 
 /* Example code: http://bl.ocks.org/michellechandra/0b2ce4923dc9b5809922 */
-	
+
 //Width and height of map
 var width = 800;
-var height = 450;
+var height = 500;
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
@@ -31,7 +33,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 var color = d3.scale.linear()
   	.range(['#f0f9e8','#0868ac']);
 
-var legendText = ["# of Registered Service Users"];
+var legendText = ['250,000 persons served', '0 registered users'];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
@@ -42,7 +44,7 @@ var svg = d3.select("body")
 // Append Div for tooltip to SVG
 var div = d3.select("body")
 		    .append("div")   
-    		.attr("class", "tooltip")               
+    		.attr("class", "tooltip")           
     		.style("opacity", 0);
 
 // Load funding data
@@ -58,22 +60,17 @@ d3.csv("assets/funding.csv", function(data) {
 			// Grab data
 			var dataState = data[i]['State'];
 			var dataUsers = parseInt(data[i]['Total Users']);
-			var dataExp = parseInt(data[i]['Total Exp']);
-			var dataCenters = parseInt(data[i]['Total Senior Centers']);
 
 			// Find the corresponding state inside the GeoJSON
 			for (var j = 0; j < json.features.length; j++)  {
 				var jsonState = json.features[j].properties.name;
-
 				if (dataState == jsonState) {
-
 					// Copy the data value into the JSON
 					json.features[j].properties.users = dataUsers; 
-
 					// Stop looking through the JSON
 					break;
 					}
-				}
+			}
 		}
 				
 		// Bind the data to the SVG and create one path per GeoJSON feature
@@ -87,7 +84,6 @@ d3.csv("assets/funding.csv", function(data) {
 			.style("fill", function(d) {
 				// Get data value
 				var value = d.properties.users;
-
 				if (value) {
 				//If value exists…
 				return color(value);
@@ -98,47 +94,44 @@ d3.csv("assets/funding.csv", function(data) {
 			});
 				 
 		// Overlaying circles for funding
-		/*
 		svg.selectAll("circle")
 			.data(data)
 			.enter()
 			.append("circle")
 			.attr("cx", function(d) {
-				return projection([d.lon, d.lat])[0];
+				return projection([d.Longitude, d.Latitude])[0];
 			})
 			.attr("cy", function(d) {
-				return projection([d.lon, d.lat])[1];
+				return projection([d.Longitude, d.Latitude])[1];
 			})
 			.attr("r", function(d) {
-				return Math.sqrt(d.years) * 4;
+				return Math.sqrt(d['Total Exp'] / 100000);
 			})
-			.style("fill", "#006837")	
-			.style("opacity", 0.85)
+			.style("fill", "#31a354")	
+			.style("opacity", 0.5)
+			.on("mouseover", function(d) {
+				d3.select(this).style("opacity", 0.7);
 
-		// Modification of custom tooltip code provided by Malcolm Maclean, "D3 Tips and Tricks" 
-		// http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
-		.on("mouseover", function(d) {      
-	    	div.transition()        
-	      	   .duration(200)      
-	           .style("opacity", .9);      
-	           div.text(d.place)
-	           .style("left", (d3.event.pageX) + "px")     
-	           .style("top", (d3.event.pageY - 28) + "px") 
-		})
+		    	div.transition() 
+		      	   .duration(200)      
+		           .style("opacity", .9);
+		           div.text(d['State'] + ': $' + d['Total Exp'])
+		           .style("left", (d3.event.pageX) + "px")     
+		           .style("top", (d3.event.pageY - 28) + "px"); 
+			})           
+		    .on("mouseout", function(d) {
+				d3.select(this).style("opacity",0.3);
 
-	    // fade out tooltip on mouse out               
-	    .on("mouseout", function(d) {       
-	        div.transition()        
-	           .duration(500)      
-	           .style("opacity", 0);   
-	    });
-	    */
+		        div.transition()        
+		           .duration(500)      
+		           .style("opacity", 0);   
+		    });
 
 		// Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 		var legend = d3.select("body").append("svg")
       			.attr("class", "legend")
      			.attr("width", 200)
-    			.attr("height", 200)
+    			.attr("height", 100)
    				.selectAll("g")
    				.data(color.domain().slice().reverse())
    				.enter()
@@ -156,7 +149,6 @@ d3.csv("assets/funding.csv", function(data) {
 		      	  .attr("y", 9)
 		      	  .attr("dy", ".35em")
 		      	  .text(function(d) { return d; });
-
 	});
 });
 

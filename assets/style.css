@@ -1,28 +1,37 @@
 body {
 	background-color: #fff;
 	color: #333;
-	font: 11px sans-serif;
+	font-family: 'PT Sans',Arial, serif;
+	font-size: 12px;
+}
+h1 {
+	margin: 48px auto 8px;
+	font-family: 'Lora', serif;
+	font-size: 28px;
+	text-align: center;
+	font-weight: 400;
 }
 svg {
 	display: block;
-	margin: 48px auto;
+	margin: 0 auto 24px;
 }
-/* On mouse hover, lighten state color */
+/* On mouse hover, lighten state color 
 path:hover {
-	fill-opacity: .7;
+	fill-opacity: .9;
 }
+*/
 
 /* Style for Custom Tooltip */
 div.tooltip {   
  	position: absolute;
 	text-align: center;
-	width: 60px;
+	width: 88px;
 	height: 28px;
-	padding: 2px;
-	font: 12px sans-serif;
-	background: white;
+	padding: 8px;
+	background: #333;
+	color: #fff;
 	border: 0px;
-	border-radius: 8px;
+	border-radius: 5px;
 	pointer-events: none;
 }
         
