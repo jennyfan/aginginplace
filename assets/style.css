@@ -9,6 +9,12 @@ body {
 	max-width: 600px;
 	margin: 0 auto;
 }
+#client {
+	position: absolute;
+	margin: 0 auto;
+	left: 77%;
+	bottom: 0px;
+}
 p {
 	font-family: 'Lora', serif;
 	font-size:  13px;
@@ -44,11 +50,15 @@ div.tooltip {
 	border: 0px;
 	border-radius: 5px;
 	pointer-events: none;
+	z-index: 100;
 }
         
 /* Legend Position Style */
 .legend {
 	position: relative;
 	margin: 0 auto;
-	top: 0;
+	top: 40px;
+	width: 480px;
+	height: 80px;
+	display: block;
 }
