@@ -1,0 +1,59 @@
+html, body {
+	margin: 0;
+	background-color: #eee;
+}
+p {
+	font-family: 'Lora', serif;
+	font-size:  13px;
+	line-height: 1.5em;
+	text-align: center;
+}
+h1 {
+	margin: 48px auto 24px;
+	font-family: 'Lora', serif;
+	font-size: 28px;
+	text-align: center;
+	font-weight: 400;
+}
+label, text {
+	font-family: 'PT Sans',Arial, serif;
+	font-size: 12px;
+	color: #333;
+}
+
+/* Charts */
+.arc {
+	stroke: #fff;
+}
+
+/* Structure */
+.wrapper {
+	width: 95%;
+	margin: 16px auto;
+}
+#map {
+	text-align: center;
+}
+#details svg {
+	margin: 8px;
+	display: inline-block;
+}
+.legendCells {
+	width: 430px;
+	margin: 0 auto;
+}
+
+/* Style for Custom Tooltip */
+div.tooltip {   
+ 	position: absolute;
+	text-align: center;
+	width: 164px;
+	height: 80px;
+	padding: 8px;
+	background: #333;
+	color: #fff;
+	border: 0px;
+	border-radius: 5px;
+	pointer-events: none;
+	z-index: 100;
+}

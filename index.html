@@ -3,55 +3,44 @@
 <head>
 <meta charset="utf-8">
 <title>Costs and Benefits of OAA Title III Programs</title>
-<link rel="stylesheet" href="assets/style.css" />
-<link href="https://fonts.googleapis.com/css?family=Lora:400,400i|PT+Sans:400,400i,700,700i" rel="stylesheet">
 
-<!-- D3 libraries -->
-<script src="https://d3js.org/d3.v4.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i|PT+Sans:400,400i,700,700i" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css" />
+
+<!-- JS libraries -->
+<script src="js/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
-<script src="https://d3js.org/d3-format.v1.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-<div id="header">
-	<h1>The Costs &amp; Benefits of OAA Funding</h1>
+<div class="wrapper">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+		<h1>The Costs &amp; Benefits of OAA Funding</h1>
 
-	<p>Title III of the Older Americans Act of 1965 (OAA) enables states to fund programs that support aging in place, such as home delivered meals, homemaker services, case management, transportation, and community-based meals. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3664926/#!po=44.3182" target="_blank">Studies suggest</a> that state investments in such community-based service programs have proportionally fewer low-care nursing home residents.</p>
+		<p>Title III of the Older Americans Act of 1965 (OAA) enables states to fund programs that support aging in place, such as home delivered meals, homemaker services, case management, transportation, and community-based meals. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3664926/#!po=44.3182" target="_blank">Studies suggest</a> that state investments in such community-based service programs have proportionally fewer low-care nursing home residents.</p>
 
-	<p><em>Data source: <a href="https://agid.acl.gov/CustomTables/SPR/Data/" target="_blank">Administration for Community Living's AGing Integrated Database (AGID)</a>, 2015</em></p>
+		<p><em>Data source: <a href="https://agid.acl.gov/CustomTables/SPR/Data/" target="_blank">Administration for Community Living's AGing Integrated Database (AGID)</a>, 2015</em></p>
+		</div>
+	</div>
 
-	<div class="nav">
-		<button type="button" id="mapBtn">State spending per capita</button>
-		<button type="button" id="detailsBtn">Programs by state
-		</button>
+	<div class="row">
+		<div class="col-md-4" id="input">
+		</div>
+
+		<div class="col-md-8" id="output">
+		</div>
 	</div>
 </div>
 
-<div id="map">
-	<svg id="mapLegend"></svg>
-	<svg id="circleLegend"></svg>
-</div>
-
-<div id="clients"></div>
-
-<div id="details">
-	<svg id="detailLegend"></svg>
-
-	<div id="detailPie"></div>
-</div>
-
 <!-- D3 script -->
-<script src="assets/data.js"></script>
+<script src="js/map.js"></script>
 
-
-<!-- jQuery Footer -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-<script>
-$("button#map").click(function() {
-	$("#map").toggle("fast");
-});
-</script>
 
 </body>
 </html>
