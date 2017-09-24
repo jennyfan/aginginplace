@@ -1,79 +1,85 @@
 /******* FUNDING BAR CHART *******/
-var input = d3.select("#input")
-              .append("svg")
-              .attr("width", widthInput)
-              .attr("height", height);
+var fundingSVG = input.append("g");
 
-var fundingSVG = input.append("g").attr("transform", "translate(0,0)");
+// Bar chart scales and axes
+var x = d3.scaleLinear().rangeRound([0, widthInput - 70]);
+var y = d3.scaleBand().rangeRound([height, 0]);
 
-// Bar Chart  Scales
-var x = d3.scaleBand()
-    .rangeRound([0, width])
-    .padding(0.1)
-    .align(0.1);
+var xAxis = d3.axisBottom().scale(x);
+var yAxis = d3.axisLeft().scale(y);
 
-var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
+// var xAxisGroup = fundingSVG.append("g")
+//     .attr("class", "x-axis axis");
 
-var z = d3.scaleOrdinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-
-var stack = d3.stack()
-    .offset(d3.stackOffsetExpand);
+var yAxisGroup = fundingSVG.append("g")
+    .attr("class", "y-axis axis");
 
 
-d3.csv("data/funding.csv", type, function(error, data) {
+d3.csv("data/funding.csv", function(error, data) {
   if (error) throw error;
 
+  data.forEach(function(d) {
+      d.State = d.State;
+      d.StateShort = d.StateShort;
+      d.Longitude = +d.Longitude;
+      d.Latitude = +d.Latitude;
+      d.Users = +d["Total Users"];
+      d.Spending = +d["Total Exp"];
+      d.PerCapita = +d["PerCapita"];
+      d.SpendingTitleIII = +d["% Title III Exp"];
+      d.Male = +d["% Male"];
+      d.Female = +d["% Female"];
+      d.Rural = +d["% Rural"];
+      d.Alone = +d["% Living Alone"];
+      d.Minority = +d["% Minority"];
+      d.Poverty = +d["% Poverty"];
+      d.Both = +d["% Minority & Poverty"];
+      d.Nutrition = +d["% Nutrition Risk"];
+  });
 
   // Per Capita Funding
-  data.sort(function(a, b) { return b[Per Capita] - a[Per Capita] });
+  data.sort(function(a, b) { return a.PerCapita - b.PerCapita });
 
-  x.domain([0, d3.max(data, function(d) { return d.height_px; })]);
+  x.domain([0, d3.max(data, function(d) { return d.PerCapita; })]);
 
-  y.domain(data.map(function(d) { return d.building; })).padding(0.2);
+  y.domain(data.map(function(d) { return d.StateShort; })).padding(0.2);
 
 
   // ---- DRAW BARS ---- //
-  var chart = svg.selectAll(".bar")
-      .data(data);
+  var chart = fundingSVG
+    .attr("transform","translate(30,0)")
+    .selectAll(".bar")
+    .data(data);
 
   var barHeight = y.bandwidth();
 
   chart.exit().remove();
 
-  var bars = chart.enter()
-      .append("g");
+  var bars = chart.enter().append("g");
 
   bars.append("rect")
       .attr("class", "bar")
       .merge(bars)
       .attr("x", 1)
-      .attr("y", function(d) { return y(d.building); })
-      .attr("width", function(d){ return x(d.height_px); })
-      .attr("height", barHeight)
-      .on("click", function(d) {
-          tooltip.transition().duration(100).style("opacity", 1);
-          tooltip.html('<img src="img/' + d.image + '"><h2>' + d.building + '</h2><ul><li>Height: ' + d.height_m + 'm, ' + d.height_ft + ' ft</li><li>City: ' + d.city + '</li><li>Floors: ' + d.floors + '</li><li>Year of completion: ' + d.completed + '</li></ul>');
-      });
+      .attr("y", function(d) { return y(d.StateShort); })
+      .attr("width", function(d){ return x(d.PerCapita); })
+      .attr("height", barHeight);
   
   // ---- DRAW TEXT LABELS ---- //
   bars.append("text")
       .attr("class","label")
-      .attr("x", function(d) { return x(d.height_px) + 10; })
-      .attr("y", function(d) { return y(d.building) + (barHeight/2); } )
+      .attr("x", function(d) { return x(d.PerCapita) + 5; })
+      .attr("y", function(d) { return y(d.StateShort) + (barHeight/2); } )
       .attr("dy", "0.35em")
       .text(function(d) { 
-          return d.height_m + "m";
+          return "$" + parseInt(d.PerCapita);
       });
 
   // ---- DRAW AXIS ---- //
-  xAxisGroup = svg.select(".x-axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+  // xAxisGroup = fundingSVG.select(".x-axis")
+  //     .attr("transform", "translate(0," + height + ")")
+  //     .call(xAxis);
 
-  yAxisGroup = svg.select(".y-axis")
-      .attr("transform", "translate(0,0)")
-      .call(yAxis);
+  yAxisGroup = fundingSVG.select(".y-axis").call(yAxis);
 
 });
