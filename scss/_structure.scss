@@ -1,0 +1,104 @@
+/*------------------------------------*\
+    STRUCTURE
+\*------------------------------------*/
+
+.wrapper {
+	text-align: center;
+}
+main {
+	margin: 8em auto 4em;
+	position: relative;
+	width: 90%;
+	display: inline-block;
+}
+.main {
+	max-width:640px;
+}
+.wide {
+	max-width:1024px;
+}
+.full {
+	margin: 0 auto;
+	width: 100vw;
+}
+.index:nth-child(2n+1) {
+	background-color: $faint-color;
+}
+.content {
+	margin: 4em 10vw 4em;
+	text-align: left;
+}
+
+
+/* sidebar */
+.sidebar {
+	margin: 0 auto 4em;
+	justify-content: center;
+}
+
+
+/* reviews grid gallery */
+.grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+}
+.grid > article {
+	width: 300px;
+	padding: 16px;
+}
+
+/* footer */
+.pagination {
+	margin: 4em auto 4em;
+	text-align: center;
+}
+.pagination span {
+	margin: 0.25em 0.5em;
+	font-weight: bold;
+}
+.pagination a {
+	margin: 0.25em;
+	background-color: $faint-color;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 0.5em 0.75em;
+	&:hover, &a:active, &a:focus {
+		background-color: $primary-color;
+		color: $inverse-color;
+	}
+}
+.footer {
+	width: 100%;
+	background-color: $dark-color;
+	margin: 3em 0 0;
+	padding: 1em 0 4em;
+	text-align: center;
+}
+
+
+/*------------------------------------*\
+    HORIZONTAL RULES
+\*------------------------------------*/
+
+hr {
+	padding: 16px 0;
+	border: 0;
+	height: 0;
+	text-align: center;
+}
+
+hr.line {
+	width: 50px;
+	padding: 0;
+	border: 2px solid rgba(0,0,0,0.1) !important;
+	margin-bottom: 48px;
+}
+
+/* HR-type spacing */
+.spacing {
+	display: inline-block;
+	margin-bottom: 16px;
+}

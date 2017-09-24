@@ -1,0 +1,258 @@
+/*------------------------------------*\
+    TEXT
+\*------------------------------------*/
+
+/* html element 62.5% font-size for REM use */
+html {
+	font-size:62.5%;
+}
+body, p, li {
+	font-family: $font-stack;
+	font-weight: 400;
+	font-size: $font-md;
+	line-height: $line-height-md;
+	color: $default-color;
+	text-align: left;
+}
+td {
+	font-family: $font-stack;
+	font-weight: 400;
+	font-size: $font-md;
+	line-height: $line-height-sm;
+	color: $default-color;
+	vertical-align: middle;
+}
+
+.display {
+	font-weight: 700;
+	font-size: $font-display;
+	line-height: $line-height-display;
+	margin: 48px auto;
+	text-align: center;
+}
+h1 {
+	font-weight: 700;
+	font-size: $font-xl;
+	line-height: $line-height-xl;
+	margin: 32px auto;
+	text-align: center;
+}
+h2 {
+	font-weight: 700;
+	font-size: $font-lg;
+	line-height: $line-height-md;
+	margin: 32px auto;
+}
+h3 {
+	font-weight: 400;
+	font-size: $font-lg;
+	line-height: $line-height-lg;
+	margin: 32px auto;
+}
+h4 {
+	font-weight: 700;
+	font-size: $font-md;
+	line-height: $line-height-md;
+	margin: 16px auto;
+}
+h5 {
+	font-weight: 400;
+	font-size: $font-sm;
+	line-height: $line-height-sm;
+	margin: 16px auto;
+}
+h6, label {
+	font-weight: 700;
+	font-size: $font-xs;
+	line-height: $line-height-xs;
+	margin: 8px auto;
+}
+small {
+	font-size: 80%;
+	line-height: 1em;
+}
+
+
+@media only screen and (min-width:480px) {
+	.display {
+		font-weight: 700;
+		font-size: $font-display;
+		line-height: $line-height-display;
+		margin: 48px auto;
+		text-align: center;
+	}
+	h1 {
+		font-weight: 700;
+		font-size: $font-display;
+		line-height: $line-height-xl;
+		margin: 32px auto;
+		text-align: center;
+	}
+	h2 {
+		font-weight: 700;
+		font-size: $font-xl;
+		line-height: $line-height-lg;
+		margin: 32px auto;
+	}
+	h3 {
+		font-weight: 400;
+		font-size: $font-lg;
+		line-height: $line-height-lg;
+		margin: 32px auto;
+	}
+	h4 {
+		font-weight: 700;
+		font-size: $font-md;
+		line-height: $line-height-md;
+		margin: 16px auto;
+	}
+	h5 {
+		font-weight: 400;
+		font-size: $font-sm;
+		line-height: $line-height-sm;
+		margin: 16px auto;
+	}
+	h6, label {
+		font-weight: 700;
+		font-size: $font-xs;
+		line-height: $line-height-xs;
+		margin: 8px auto;
+	}
+}
+
+
+blockquote, blockquote p, .quote {
+	font-family: $font-stack;
+	font-size: $font-lg;
+	line-height: $line-height-lg;
+	margin: 32px;
+	border: 0;
+	p {
+		margin: 0 auto;
+	}
+	@media only screen and (min-width:768px) {
+		font-size: $font-display;
+		line-height: $line-height-xl;
+		margin: 16px 32px;
+	}
+}
+blockquote:before {
+	content: "\201c";
+    font-family: $font-serif;
+    font-size: 48px;
+    font-weight: 700;
+    float: left;
+    margin-left: -8px;
+    margin-top: 24px;
+}
+.caption {
+	font-weight: 700;
+	font-size: $font-xs;
+	line-height: $line-height-xs;
+	margin: 8px auto;
+}
+.byline {
+	margin-top: 8px;
+	font-size: $font-md;
+	font-style: italic;
+	line-height: $line-height-md;
+}
+.byline:before {
+	content: "\2014";
+}
+
+.copyright {
+	font-size: $font-xs;
+	color: $inverse-color;
+}
+
+.primary { color: $primary-color; }
+.secondary { color: $secondary-color; }
+.success { color: $success-color; }
+.warning { color: $warning-color; }
+.danger { color: $danger-color; }
+.inverse { color: $inverse-color; }
+
+
+/*------------------------------------*\
+    LINKS
+\*------------------------------------*/
+
+@mixin linkcolor($state-color) {
+	color: $state-color;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	&:hover {
+		color: $state-color;
+		text-decoration: underline;
+		outline:0;
+	}
+}
+
+a {
+	color: $link-color;
+	text-decoration:underline;
+
+	&:hover {
+		color: $link-hover-color;
+		outline:0;
+	}
+	&:focus {
+		outline:0;
+	}
+	&:active {
+		outline:0;
+	}
+	.primary { @include linkcolor($primary-color); }
+	.secondary { @include linkcolor($secondary-color); }
+	.success { @include linkcolor($success-color); }
+	.warning { @include linkcolor($warning-color); }
+	.danger { @include linkcolor($danger-color); }
+	.inverse { @include linkcolor($inverse-color); }
+}
+
+.fa-check {
+	color: $success-color;
+}
+.fa-close {
+	color: $danger-color;
+}
+
+/*------------------------------------*\
+    LIST
+\*------------------------------------*/
+
+ul {
+	list-style-type: none;
+	text-align: left;
+}
+ul li:before {
+	content: '\2714\0020';
+	color: $success-color;
+	padding-right: 8px;
+}
+ul li {
+	line-height: $line-height-lg;
+}
+
+
+/*------------------------------------*\
+    MISC
+\*------------------------------------*/
+
+::selection {
+	background: $highlight-color;
+	color: $default-color;
+	text-shadow:none;
+}
+::-webkit-selection {
+	background: $highlight-color;
+	color: $default-color;
+	text-shadow:none;
+}
+::-moz-selection {
+	background: $highlight-color;
+	color: $default-color;
+	text-shadow:none;
+}
