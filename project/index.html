@@ -13,32 +13,33 @@
 
 <div class="wrapper">
 	<div class="row" id="header">
-		<div class="col-sm-3">
-			<h1 class="text-left">Aging in Place with Home &amp; Community-based Services</h1>
+		<div class="col-sm-4">
+			<h1 class="text-left">Supporting Aging in Place with Home &amp; Community-based Services (HCBS)</h1>
 		</div>
 
-		<div class="col-sm-8 col-sm-offset-1">
+		<div class="col-sm-8">
 		<p>Title III of the Older Americans Act of 1965 (OAA) enables states to fund HCBS programs such as home meal delivery and transportation services to support aging in place. OAA clients are particularly vulnerable, with 56% living alone, 25% near poverty (HHI < $10k), and 56% receiving half of their daily food intake from home-delivered meal programs. Supporting this population could help decrease the proportion of low-care residents in nursing homes, which are more expensive for state budgets and often create worse outcomes for seniors.</p>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-5" id="input">
-			<h2 class="text-left">OAA Funding</h2>
-			<button class="xs pull-right" id="sortAsc" onclick="sortAsc()">Asc</button>
-			<button class="xs pull-right" id="sortDesc" onclick="sortDesc()">Desc</button>
+			<h2 class="text-left">State Spending on HCBS Services (Per Capita)</h2>
+			<!-- HIDE FOR NOW 
+			<button class="xs pull-right" id="sortAsc">Asc</button>
+			<button class="xs pull-right" id="sortDesc">Desc</button> -->
 		</div>
 
 		<div class="col-md-7" id="output">
-			<h2 class="text-center">Long-term Care</h2>
+			<h2 class="text-center">Occupancy Rate at Nursing Homes</h2>
 		</div>
 	</div>
 
 	<div class="row" id="footer">
-		<div class="col-sm-4 col-sm-offset-2">
-			<p>Data sources: <a href="https://agid.acl.gov/CustomTables/SPR/Data/" target="_blank" title="The AGing Integrated Database (AGID) is an on-line query system based on ACL-related data files and surveys, and includes population characteristics from the Census Bureau for comparison purposes.">Administration for Community Living's AGing Integrated Database (AGID)</a>, <a href="http://ltcfocus.org" target="_blank" title="LTCfocus.org provides data on nursing home care in the US. Our goal is to allow researchers to trace relationships between state policies, local market forces and the quality of long-term care and enable policymakers to craft state and local guidelines that promote high-quality, cost-effective, equitable care for older Americans.">Long-term Care Focus @ Brown University</a></p>
+		<div class="col-sm-4 col-sm-offset-1">
+			<p>Data sources: <a href="https://agid.acl.gov/CustomTables/SPR/Data/" target="_blank" title="The AGing Integrated Database (AGID) is an on-line query system based on ACL-related data files and surveys, and includes population characteristics from the Census Bureau for comparison purposes.">Administration for Community Living's AGing Integrated Database (AGID)</a>, <a href="http://ltcfocus.org" target="_blank" title="LTCfocus.org provides data on nursing home care in the US. Our goal is to allow researchers to trace relationships between state policies, local market forces and the quality of long-term care and enable policymakers to craft state a4nd local guidelines that promote high-quality, cost-effective, equitable care for older Americans.">Long-term Care Focus @ Brown University</a></p>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-4 col-sm-offset-2">
 			<p>Inspired by: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3664926/#!po=44.3182" target="_blank" title="Thomas, Kali S, and Vincent Mor. “The Relationship between Older Americans Act Title III State Expenditures and Prevalence of Low-Care Nursing Home Residents.” Health Services Research 48.3 (2013): 1215–1226. PMC. Web. 24 Sept. 2017.">“The Relationship between Older Americans Act Title III State Expenditures and Prevalence of Low-Care Nursing Home Residents.”</a></p>
 		</div>
 	</div>
@@ -52,9 +53,9 @@
 <script src="js/bootstrap.min.js"></script>
 
 <!-- D3 scripts -->
-<script src="js/main.js"></script>
-<script src="js/bar.js"></script>
 <script src="js/map.js"></script>
+<script src="js/bar.js"></script>
+<script src="js/main.js"></script>
 
 
 </body>
