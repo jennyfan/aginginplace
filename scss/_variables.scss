@@ -1,92 +1,12 @@
-html, body {
-  margin: 0;
-  background-color: #051A2D;
-  font-family: 'Exo 2', Arial, serif;
-  font-weight: 100;
-  color: #fff;
-}
-p {
-  font-size:  14px;
-  line-height: 1.5em;
-  text-align: center;
-  font-weight: 300;
-}
-h1 {
-  margin: 48px auto 24px;
-  font-size: 32px;
-  text-align: center;
-  font-weight: 300;
-}
-h2 {
-  font-size: 14px;
-  font-weight: 300;
-}
-.label, text {
-  font-size: 10px;
-  fill: #fff;
-  font-family: 'Exo 2', Arial, serif;
-  font-weight: 100;
-}
-
-/* Charts */
-.bar {
-  fill: #BCAF7E;
-}
-.bar:hover, .active {
-  fill: #F28532;
-}
-.axis {
-  font: 10px sans-serif;
-}
-.axis path,
-.axis line {
-  fill: none;
-  stroke-width: 0;
-  shape-rendering: crispEdges;
-}
-path {
-  stroke: #051A2D;
-  stroke-width: 0;
-}
-
-/* Structure */
-.wrapper {
-  width: 95%;
-  margin: 16px auto;
-}
-#map {
-  text-align: center;
-}
-#details svg {
-  margin: 8px;
-  display: inline-block;
-}
-.legendCells {
-  width: 430px;
-  margin: 0 auto;
-}
-
-/* Style for Custom Tooltip */
-div.tooltip {   
-  position: absolute;
-  text-align: center;
-  width: 164px;
-  height: 80px;
-  padding: 8px;
-  background: #333;
-  color: #fff;
-  border: 0px;
-  border-radius: 5px;
-  pointer-events: none;
-  z-index: 100;
-}
-
 /*------------------------------------*\
     SITEWIDE SASS VARIABLES
 \*------------------------------------*/
 
-$font-stack: 'Karla', 'Lucida Sans', Helvetica, Arial, sans-serif;
-$font-serif: Georgia, "Times New Roman", Times, serif;
+$font-stack: 'Exo 2', Helvetica, Arial, sans-serif;
+$font-secondary: 'Source Sans Pro', Arial, serif;
+$font-weight-sm: 100;
+$font-weight-md: 300;
+$font-weight-lg: 400;
 $font-xs: 12px;
 $font-sm: 14px;
 $font-md: 16px;
@@ -101,46 +21,14 @@ $line-height-xl: 40px;
 $line-height-display: 48px;
 
 /**** Colors ****/
-$default-color: #2e3347; // storm blue
-$primary-color: #68d8d8; // seafoam blue
-$secondary-color: #8d8d8d; // grey
-$success-color: #26c794; // leaf green
-$warning-color: #ffd64f; // golden
-$danger-color: #ff5644; // clay red
-$inverse-color: #ffffff; // white
-$highlight-color: #fff7db; // beige
-$shade-color: #616973; // grey blue
-$dark-color: #081f2b; // midnight blue
-$cta-color: #058f63; // forest green
-$border-color: #d1d1d1; // soft grey
+$dark-color: #051A2D; // dark blue
+$light-color: #ffffff; // white
+$primary-color: #BCAF7E; // light tan
+$hover-color: #665C3C; // dark tan
+$accent-color: #F28532; // orange
 $link-color: #008dda; // cerulean
-$link-hover-color: #004383; // navy
-$disabled-color: #e5e5e5; // light grey
-$faint-color: #f3f3f3;
-
-.disabled {
-	opacity: 0.65;
-}
-
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
-}
-
-@mixin centerer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-@function set-text-color($color) {
-  @if (lightness($color) > 50) {
-    @return $default-color; // Lighter background, return dark color
-  } @else {
-    @return $inverse-color; // Darker background, return light color
-  }
+$disabled-color: #999999; // grey
+$shadow-color: #333333; // gray
+.disabled, .overlay {
+  opacity: 0.65;
 }

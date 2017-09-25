@@ -3,16 +3,14 @@
 \*------------------------------------*/
 
 input {
-	@include border-radius(2px);
-	border: 1px solid $border-color;
+	border: 1px solid $primary-color;
 	font-size: $font-sm;
 	line-height: $line-height-sm;
-	color: $secondary-color;
+	color: $light-color;
 	
 	&:focus {
 		outline:0;
-		border:1px solid $link-color;
-		color: $default-color;
+		border:1px solid $hover-color;
 	}
 }
 
