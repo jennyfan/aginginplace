@@ -16,19 +16,20 @@ html, body {
   margin: 48px auto; }
 
 #header {
-  margin: 24px auto 16px; }
+  margin: 24px auto 24px; }
 
 #input, #output {
   position: relative; }
 
 #details {
   position: absolute;
-  width: 300px;
-  bottom: 80px;
-  right: 50px;
+  width: 400px;
+  bottom: 220px;
+  right: 100px;
   height: 200px;
-  border-radius: 5px;
-  background-color: #333333; }
+  color: #ffffff;
+  z-index: 100;
+  opacity: 0; }
 
 /* Legends */
 .mapLegend {
@@ -43,15 +44,16 @@ html, body {
 .tooltip {
   position: absolute;
   text-align: center;
-  width: 164px;
-  height: 120px;
+  width: 240px;
+  height: 150px;
   padding: 8px;
   background: #333333;
   color: #ffffff;
   border: 0px;
   border-radius: 5px;
   pointer-events: none;
-  z-index: 100; }
+  z-index: 100;
+  opacity: 0; }
 
 /*------------------------------------*    CHARTS
 \*------------------------------------*/
@@ -59,7 +61,7 @@ html, body {
   fill: #BCAF7E; }
 
 .bar:hover, .active {
-  fill: #F28532; }
+  fill: #F28532 !important; }
 
 .axis {
   font-family: 12px;
@@ -70,7 +72,8 @@ html, body {
   stroke-width: 0;
   shape-rendering: crispEdges; }
 
-.path {
+.path, path {
+  fill: #051A2D;
   stroke: #051A2D;
   stroke-width: 1; }
 
@@ -100,10 +103,18 @@ h1 {
 h2 {
   font-family: "Exo 2", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
-  margin: 16px 16px 0px;
+  margin: 16px;
   display: inline-block; }
+
+h3 {
+  font-family: "Exo 2", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin: 0 auto 8px; }
 
 .label, text {
   font-family: "Exo 2", Helvetica, Arial, sans-serif;
@@ -140,15 +151,15 @@ a {
 \*------------------------------------*/
 /****  Button/Input Sizing ****/
 .xs {
-  padding: 4px 8px;
-  min-width: 72px; }
+  padding: 2px 4px;
+  min-width: 64px; }
 
 .sm {
-  padding: 8px 12px;
+  padding: 4px 8px;
   min-width: 80px; }
 
 .md {
-  padding: 12px 16px;
+  padding: 8px 12px;
   min-width: 96px; }
 
 .lg {
@@ -157,18 +168,18 @@ a {
 
 /**** BUTTONS ****/
 button {
-  margin: 16px 4px 0px;
+  margin: 16px 8px 0px;
   display: inline-block;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 100;
   font-size: 14px;
-  border-radius: 5px;
-  background-color: #BCAF7E;
-  border: solid 1px #BCAF7E;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+  background-color: #665C3C;
+  border: 0;
   color: #ffffff; }
   button:hover, button:focus, button:active {
-    background-color: #665C3C;
-    border: solid 1px #665C3C;
+    background-color: #BCAF7E;
     color: #ffffff; }
 
 /*------------------------------------*    LIST

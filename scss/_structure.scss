@@ -13,19 +13,22 @@ html, body {
   margin: 48px auto;
 }
 #header {
-  margin: 24px auto 16px;
+  margin: 24px auto 24px;
 }
 #input, #output {
   position: relative;
 }
 #details {
   position: absolute;
-  width: 300px;
-  bottom: 80px;
-  right: 50px;
+  width: 400px;
+  bottom: 220px;
+  right: 100px;
   height: 200px;
-  border-radius: 5px;
-  background-color: $shadow-color;
+  // border-radius: 5px;
+  // background-color: $shadow-color;
+  color: $light-color;
+  z-index: 100;
+  opacity: 0;
 }
 
 /* Legends */
@@ -42,8 +45,8 @@ html, body {
 .tooltip {   
   position: absolute;
   text-align: center;
-  width: 164px;
-  height: 120px;
+  width: 240px;
+  height: 150px;
   padding: 8px;
   background: $shadow-color;
   color: $light-color;
@@ -51,4 +54,5 @@ html, body {
   border-radius: 5px;
   pointer-events: none;
   z-index: 100;
+  opacity: 0;
 }

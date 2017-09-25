@@ -42,3 +42,33 @@ var details = d3.select("#input")
 				.append("div")
 				.attr("class", "overlay")
 				.attr("id", "details");
+
+// Sort functions
+function sortAsc(data, field) {
+  data.sort(function(a, b) {
+    return a[field] - b[field];
+  })
+}
+function sortDesc(data, field) {
+  data.sort(function(a, b) {
+    return b[field] - a[field];
+  })
+}
+
+function showDetails(d) {
+	// Highlight bar
+    d3.select("#barChart").selectAll('g rect').classed("active", false);
+    d3.select(".bar." + d.State).selectAll('rect').classed("active", true);
+
+    // Highlight state
+    d3.selectAll(".state." + d.State).selectAll("path").classed("active", true);
+
+    // Show details
+    d3.select(details).transition().style("opacity", 0.9);
+
+    d3.select(details).html('<h1>' + d.State + '</h1><br><p>' + formatThousands(d.Users) + ' total clients</p><p>$' + parseInt(d.PerCapita) + ' spent per capita</p><p>' + d.Rural + '% rural</p><p>' + d.Alone + '% living alone</p><p>' + d.Poverty + '% in poverty</p><p>' + d.Nutrition + '% at nutrition risk</p><h2>' + d.LowCare + '% low-care residents</h2>');
+}
+
+// GO!!!
+createBarChart();
+createMap();

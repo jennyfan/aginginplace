@@ -5,7 +5,7 @@
   fill: $primary-color;
 }
 .bar:hover, .active {
-  fill: $accent-color;
+  fill: $accent-color !important;
 }
 .axis {
   font-family: $font-xs;
@@ -16,7 +16,8 @@
   stroke-width: 0;
   shape-rendering: crispEdges;
 }
-.path {
+.path, path {
+  fill: $dark-color;
   stroke: $dark-color;
   stroke-width: 1;
 }
