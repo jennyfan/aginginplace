@@ -2,7 +2,7 @@
   "name": "StudioD3",
   "version": "1.0.0",
   "description": "D3 visualization for MDE Studio",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

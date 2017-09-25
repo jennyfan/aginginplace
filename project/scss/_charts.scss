@@ -1,0 +1,22 @@
+/*------------------------------------*\
+    CHARTS
+\*------------------------------------*/
+.bar {
+  fill: $primary-color;
+}
+.bar:hover, .active {
+  fill: $accent-color;
+}
+.axis {
+  font-family: $font-xs;
+  font-size: $font-xs;
+}
+.axis path, .axis line {
+  fill: none;
+  stroke-width: 0;
+  shape-rendering: crispEdges;
+}
+.path {
+  stroke: $dark-color;
+  stroke-width: 1;
+}

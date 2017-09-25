@@ -38,11 +38,22 @@ d3.csv("data/funding.csv", function(error, data) {
   });
 
   // Per Capita Funding
-  data.sort(function(a, b) { return a.PerCapita - b.PerCapita });
+  sortAsc(data, "PerCapita");
+
+  function sortAsc(data, field) {
+    data.sort(function(a, b) {
+      return a[field] - b[field];
+    })
+  }
+
+  function sortDesc(data, field) {
+    data.sort(function(a, b) {
+      return b[field] - a[field];
+    })
+  }
 
   x.domain([0, d3.max(data, function(d) { return d.PerCapita; })]);
-
-  y.domain(data.map(function(d) { return d.StateShort; })).padding(0.2);
+  y.domain(data.map(function(d) { return d.StateShort; })).padding(0.1);
 
 
   // ---- DRAW BARS ---- //
@@ -63,8 +74,14 @@ d3.csv("data/funding.csv", function(error, data) {
       .attr("x", 1)
       .attr("y", function(d) { return y(d.StateShort); })
       .attr("width", function(d){ return x(d.PerCapita); })
-      .attr("height", barHeight);
-  
+      .attr("height", barHeight)
+      .on("mouseover", function(d) {
+        details.html('<h2>' + d.State + '</h2>');
+      })
+      .on("mouseout", function(d) {
+        details.transition().style("opacity", 0);
+      });
+
   // ---- DRAW TEXT LABELS ---- //
   bars.append("text")
       .attr("class","label")

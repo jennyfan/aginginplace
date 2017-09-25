@@ -8,7 +8,9 @@ var mapSVG = output.append("g")
 d3.csv("data/LTC.csv", function(error, data) {
 	if (error) throw error;
 
-	data.forEach(function(d) {
+	var LTCdata = data;
+
+	LTCdata.forEach(function(d) {
 	    d.State = d.State;
 	    d.TotalBeds = +d.TotalBeds;
 	    d.ForProfit = +d.ForProfit;
@@ -32,14 +34,14 @@ d3.csv("data/LTC.csv", function(error, data) {
 
 		var stateFeatures = json.features;
 
-		data.forEach(function(i) {
-			var dataState = i.State;
-			var dataOccupancy = i.Occupancy;
+		LTCdata.forEach(function(i) {
+			var LTCState = i.State;
+			var LTCOccupancy = i.Occupancy;
 
 			stateFeatures.forEach(function(j) {
 				var jsonState = j.properties.name;
-				if (dataState == jsonState) {
-					j.properties.occupancy = dataOccupancy;
+				if (LTCState == jsonState) {
+					j.properties.occupancy = LTCOccupancy;
 				}
 			})
 		});
@@ -51,20 +53,66 @@ d3.csv("data/LTC.csv", function(error, data) {
 			.append("path")
 			.attr("d", path)
 			.style("fill", function(d) {
-				var value = d.properties.occupancy;
-				if (value > 0) { return linear(value); } else { return "#999"; }
+				return color(d.properties.occupancy);
+			})
+			.attr("class", function(d) {
+				return "path " + d.properties.name;
+			})
+			.on("mouseover", function(d) {
+				// Color the state
+				d3.select(this).style("fill", "#F28532");
+
+				// Identify selected state
+				var state = d.properties.name;
+
+				tooltip.transition().style("opacity", .9);
+
+				tooltip.html(state)
+						.style("left", (d3.event.pageX) + "px")
+						.style("top", (d3.event.pageY - 28) + "px");
+				// details.transition().duration(200).style("opacity", .9);
+				// details.html('<b>Details</b>');
+			})
+			.on("mouseout", function(d) {
+				d3.select(this).style("fill", color(d.properties.occupancy));
+
+				tooltip.transition().style("opacity", 0);
+			 	// details.transition().duration(200).style("opacity", 0);
 			});
+
+		// show Tooltip (Details)
+		function showTooltip(state) {
+			LTCdata.forEach(function(k) {
+				if (state == k.State) {
+					return true;
+				}
+			});
+			// k.TotalBeds
+			// d.ForProfit % for profit
+			// d.Pay_mcare % Medicare
+			// d.Pay_mcaid % Medicaid
+			// d.Pay_other % Other
+			// d.Occupancy % Occupancy
+			// Average age: d.AvgAge
+			// Average ADL: d.AvgADL
+			// d.LowCare % Low Care
+		}
 	});
+
+	// Map color
+	var color = function(value) {
+		if (value > 0) { return linear(value); }
+		else { return "#999"; }
+	};
 
 	/** Per Capita Scale **/
 	var mapScale = [60,70,80,90,100];
 
-	var legendLeft = parseInt(($("#output").width() - 430)/2);
+	var legendLeft = parseInt(($("#output").width() - 430)/2 + 30);
 
 	var mapLegend = output.append("g")
-		.attr("width", 430)
-		.attr("height", 40)
-		.attr("transform","translate(" + legendLeft + ",40)");
+		.attr("class", "mapLegend")
+		.attr("transform","translate(" + legendLeft + ",20)");
 
 	var legendLinear = d3.legendColor()
 	  .shapeWidth(70)
@@ -74,5 +122,4 @@ d3.csv("data/LTC.csv", function(error, data) {
 	  .scale(linear);
 
 	mapLegend.call(legendLinear);
-
 });

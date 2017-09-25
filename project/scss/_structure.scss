@@ -2,103 +2,53 @@
     STRUCTURE
 \*------------------------------------*/
 
+html, body {
+  background-color: $dark-color;
+  overflow: hidden;
+}
 .wrapper {
-	text-align: center;
+  // min-width: 1600px;
+  max-width: 1920px;
+  width: 90%;
+  margin: 48px auto;
 }
-main {
-	margin: 8em auto 4em;
-	position: relative;
-	width: 90%;
-	display: inline-block;
+#header {
+  margin: 24px auto 16px;
 }
-.main {
-	max-width:640px;
+#input, #output {
+  position: relative;
 }
-.wide {
-	max-width:1024px;
-}
-.full {
-	margin: 0 auto;
-	width: 100vw;
-}
-.index:nth-child(2n+1) {
-	background-color: $faint-color;
-}
-.content {
-	margin: 4em 10vw 4em;
-	text-align: left;
+#details {
+  position: absolute;
+  width: 300px;
+  bottom: 80px;
+  right: 50px;
+  height: 200px;
+  border-radius: 5px;
+  background-color: $shadow-color;
 }
 
-
-/* sidebar */
-.sidebar {
-	margin: 0 auto 4em;
-	justify-content: center;
+/* Legends */
+.mapLegend {
+  width: 430px;
+  height: 40px;
+}
+.legendCells {
+  width: 430px;
+  margin: 0 auto;
 }
 
-
-/* reviews grid gallery */
-.grid {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: flex-start;
-	align-content: flex-start;
-}
-.grid > article {
-	width: 300px;
-	padding: 16px;
-}
-
-/* footer */
-.pagination {
-	margin: 4em auto 4em;
-	text-align: center;
-}
-.pagination span {
-	margin: 0.25em 0.5em;
-	font-weight: bold;
-}
-.pagination a {
-	margin: 0.25em;
-	background-color: $faint-color;
-	text-decoration: none;
-	font-size: 16px;
-	padding: 0.5em 0.75em;
-	&:hover, &a:active, &a:focus {
-		background-color: $primary-color;
-		color: $inverse-color;
-	}
-}
-.footer {
-	width: 100%;
-	background-color: $dark-color;
-	margin: 3em 0 0;
-	padding: 1em 0 4em;
-	text-align: center;
-}
-
-
-/*------------------------------------*\
-    HORIZONTAL RULES
-\*------------------------------------*/
-
-hr {
-	padding: 16px 0;
-	border: 0;
-	height: 0;
-	text-align: center;
-}
-
-hr.line {
-	width: 50px;
-	padding: 0;
-	border: 2px solid rgba(0,0,0,0.1) !important;
-	margin-bottom: 48px;
-}
-
-/* HR-type spacing */
-.spacing {
-	display: inline-block;
-	margin-bottom: 16px;
+/* Style for Custom Tooltip */
+.tooltip {   
+  position: absolute;
+  text-align: center;
+  width: 164px;
+  height: 120px;
+  padding: 8px;
+  background: $shadow-color;
+  color: $light-color;
+  border: 0px;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 100;
 }
