@@ -41,7 +41,8 @@ var tooltip = d3.select("body")
 var details = d3.select("#input")
 				.append("div")
 				.attr("class", "overlay")
-				.attr("id", "details");
+				.attr("id", "details")
+				.html("<h2>Every additional $25 states spend on home-delivered meals per year per senior, is associated with a decrease in the low-care NH population of 1%.</h2>");
 
 // Sort functions
 function sortAsc(data, field) {

@@ -84,14 +84,12 @@ function createBarChart() {
         d3.selectAll(".state." + d.State).selectAll("path").classed("active", true);
 
         // Show details
-        details.transition().style("opacity", 0.9);
-
         details.html('<h3>' + d.State + '</h3><h2>' + d.LowCare + '% low-care residents</h2><p>' + formatThousands(d.Users) + ' total clients</p><p>$' + parseInt(d.PerCapita) + ' spent per capita</p><p>' + d.Rural + '% rural</p><p>' + d.Alone + '% living alone</p><p>' + d.Poverty + '% in poverty</p><p>' + d.Nutrition + '% at nutrition risk</p><br><p>' + d.ForProfit + '% for-profit nursing homes</p><p>' + d.Pay_mcaid + '% Medicaid / ' + d.Pay_mcare + '% Medicare</p><p>' + d.Pay_other + '% patients not uncovered</p><p>Average Age: ' + d.AvgAge + '</p><p>Average ADL Index (out of 28): ' + d.AvgADL + '</p>');
       })
       .on("mouseout", function(d) {
         d3.selectAll(".state." + d.State).selectAll("path").classed("active", false);
 
-        // tooltip.transition().style("opacity", 0);
+        details.html('<h2>Every additional $25 states spend on home-delivered meals per year per senior is associated with a decrease in the low-care NH population of 1%.</h2>');
       });
 
     // ---- DRAW TEXT LABELS ---- //
