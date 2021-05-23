@@ -1,4 +1,5 @@
 .DS_Store
 data_AGID/
-data_LTCFocus
+data_LTCFocus/
 node_modules
+project/scss/
